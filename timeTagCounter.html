@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Tag Counter for WorkFlowy</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: left;
+      margin: 80px;
+    }
+    a:link {
+      color: #6ACFCD
+    }
+  </style>
+</head>
+<body>
+  <h3>Version 1.2</h3>
+  <ul>
+    <li>Counts time using time tags: #2h #15m @2h @15m</li>
+    <li>More powerful replacement for time tag feature in WFcount bookmarklet.</li>
+    <li>Use either tag character, followed by digits, followed my h (hours) and m (minutes)</li>
+    <li>Calculates time totals for All, Completed and Incomplete items.</li>
+    <li>Generates different totals for each tag character.</li>
+    <li>For example: you could use # tags to estimate time, and @ tags to record actual time.</li>
+    <li>With no search, it gets all tags from the current zoom level.</li>
+    <li>With search, it only calculates VISIBLE tags.</li>
+  </ul>
+  <br>
+  <p>
+    <b>To install, drag the link to your bookmarks bar.</b>
+  </p>
+  <p>
+    <b>
+      <a href="javascript:(function&#32;timeTagCounter_1_2(){function&#32;toastMsg(str,sec,err){WF.showMessage(str.bold(),err);setTimeout(()=&gt;WF.hideMessage(),(sec||2)*1e3)}function&#32;applyToEachItem(functionToApply,parent){functionToApply(parent);for(let&#32;child&#32;of&#32;parent.getChildren()){applyToEachItem(functionToApply,child)}}function&#32;findMatchingItems(itemPredicate,parent){const&#32;matches=[];function&#32;addIfMatch(item){if(itemPredicate(item)){matches.push(item)}}applyToEachItem(addIfMatch,parent);return&#32;matches}const&#32;itemHasTimeTag=item=&gt;WF.getItemNameTags(item).concat(WF.getItemNoteTags(item)).some(t=&gt;t.tag.match(/([@#])(\d+)([hm])$/i));const&#32;getTimeTags=item=&gt;WF.getItemNameTags(item).concat(WF.getItemNoteTags(item)).filter(t=&gt;t.tag.match(/([@#])(\d+)([hm])$/i)!==null);const&#32;matchHasTimeTag=item=&gt;item.data.search_result&amp;&amp;item.data.search_result.matches&amp;&amp;itemHasTimeTag(item);function&#32;getMinutes(str){const&#32;m=str.match(/(\d+)([hm])/i);return&#32;m[2]===&quot;h&quot;?parseInt(m[1])*60:parseInt(m[1])}function&#32;convertMinsToStr(mins){const&#32;hours=Math.floor(mins/60),netMins=mins-hours*60;return`${hours.toString().padStart(4,&quot;&#32;&quot;)}h&#32;${netMins.toString().padStart(2,&quot;&#32;&quot;)}m`}function&#32;getTimeTagInfo(items){let&#32;hashComplete=0,hashInComplete=0,atComplete=0,atInComplete=0;items.forEach(item=&gt;{getTimeTags(item).forEach(t=&gt;{let&#32;tag=t.tag,addMins=getMinutes(tag);if(tag.startsWith(&quot;#&quot;)){item.isWithinCompleted()?hashComplete+=addMins:hashInComplete+=addMins}else{item.isWithinCompleted()?atComplete+=addMins:atInComplete+=addMins}})});const&#32;hashAll=hashComplete+hashInComplete,atAll=atComplete+atInComplete;if(atAll+hashAll===0)return&#32;null;hashTotals=hashAll&gt;0?`&lt;br&gt;#Total: &#32; \t${convertMinsToStr(hashAll)}&lt;br&gt;&#32;Complete:\t${convertMinsToStr(hashComplete)}&lt;br&gt;&#32;Incomplete:\t${convertMinsToStr(hashInComplete)}`:&quot;&quot;;atTotals=atAll&gt;0?`&lt;br&gt;@Total: &#32; \t${convertMinsToStr(atAll)}&lt;br&gt;&#32;Complete:\t${convertMinsToStr(atComplete)}&lt;br&gt;&#32;Incomplete:\t${convertMinsToStr(atInComplete)}`:&quot;&quot;;return`&lt;pre&gt;${hashTotals}&lt;br&gt;${atTotals}&lt;/pre&gt;`}const&#32;itemsToCount=WF.currentSearchQuery()?findMatchingItems(matchHasTimeTag,WF.currentItem()):findMatchingItems(itemHasTimeTag,WF.currentItem());const&#32;timeTagInfo=getTimeTagInfo(itemsToCount);if(!timeTagInfo)return&#32;void&#32;toastMsg(&quot;No&#32;Time&#32;Tags&#32;found.&quot;,2,true);const&#32;name=WF.currentItem().getNameInPlainText();const&#32;search=WF.currentSearchQuery()?`${WF.currentSearchQuery()}&#32;:&#32;`:&quot;&quot;;WF.showAlertDialog(timeTagInfo,search+name)})();">timeTagCounter</a>
+    </b>
+  </p>
+  <br>
+  <p>
+    <a href="https://rawbytz.wordpress.com">rawbytz.wordpress.com</a>
+  </p>
+</body>
+</html>
