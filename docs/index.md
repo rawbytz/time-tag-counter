@@ -25,8 +25,8 @@
 <!-- 
 LINKS REFERENCING THIS
 
-@BLOGGER https://www.blogger.com/blogger.g?blogID=6597785605721546133#editor/target=page;pageID=2033525524985473845
+@BLOGGER Redirect https://rawbytz.blogspot.com/p/time-tag-counter-for-workflowy.html
 
-update this https://rawbytz.blogspot.com/p/wfcount-bookmarklet.html
+@BLOGGER Redirect https://rawbytz.blogspot.com/p/wfcount-bookmarklet.html
 
  -->
