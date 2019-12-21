@@ -17,8 +17,8 @@
 
 
 ## Links:
-- [Source code]()
-- [Tag Counter Bookmarklet is here]()
+- [Source code](https://github.com/rawbytz/time-tag-counter/blob/master/timeTagCounter.js)
+- [Tag Counter Bookmarklet is here](https://rawbytz.github.io/tag-counter/)
 - [rawbytz Blog](https://rawbytz.wordpress.com)
 
 
