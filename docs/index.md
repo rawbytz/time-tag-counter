@@ -22,9 +22,6 @@
 - [rawbytz Blog](https://rawbytz.wordpress.com)
 
 
-## Version Notes:
-- v1.0 (2019-07-14): Bug fix: blah blah
-
 <!-- 
 LINKS REFERENCING THIS
 
